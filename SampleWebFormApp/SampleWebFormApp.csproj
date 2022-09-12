@@ -70,6 +70,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CachingDemo.aspx" />
     <Content Include="DisplayData.aspx" />
     <Content Include="Global.asax" />
     <Content Include="HomePage.aspx" />
@@ -86,9 +87,17 @@
     <Content Include="QueryStringDemo.aspx" />
     <Content Include="RecipientPage.aspx" />
     <Content Include="SessionDemo.aspx" />
+    <Content Include="UserControls\TimeControl.ascx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CachingDemo.aspx.cs">
+      <DependentUpon>CachingDemo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CachingDemo.aspx.designer.cs">
+      <DependentUpon>CachingDemo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="DisplayData.aspx.cs">
       <DependentUpon>DisplayData.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -149,6 +158,13 @@
     </Compile>
     <Compile Include="SessionDemo.aspx.designer.cs">
       <DependentUpon>SessionDemo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\TimeControl.ascx.cs">
+      <DependentUpon>TimeControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\TimeControl.ascx.designer.cs">
+      <DependentUpon>TimeControl.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

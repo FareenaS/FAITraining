@@ -47,38 +47,21 @@
             </asp:Repeater>
         </div>
 
-        <div>
+        <div style="width: 70%">
             <hr />
-            <asp:DataList runat="server" Width="1613px" ID="grdCart">
-                <HeaderTemplate>
-                    <h2>UR Cart:</h2>
-                    <table border="1" style="width:100%">
-                        <tr>
-                            <th>Product ID</th>
-                            <th>Product Name</th>
-                            <th>Product Price</th>
-                            <th>Quantity</th>
-                        </tr>
-                </HeaderTemplate>
+            <asp:DataList runat="server" Width="1613px" ID="grdCart" RepeatColumns="4" >
                 <ItemTemplate>
-                    <tr>
-                        <td>
-                            <asp:Label Text='<%#Eval("ProductId") %>' runat="server" />
-                        </td>
-                        <td>
-                            <asp:Label Text='<%#Eval("ProductName") %>' runat="server" />
-                        </td>
-                        <td>
-                            <asp:Label Text='<%#Eval("Price") %>' runat="server" />
-                        </td>
-                        <td>
-                            <asp:Image ImageUrl='<%#Eval("Image") %>' Width="50px" Height="50px" runat="server" />
-                        </td>
-                    </tr>
+                    <div style="padding:5px; margin:3px; border:2px double blue">
+                        <h2><%#Eval("ProductName") %></h2>
+                        <hr />
+                        <div>
+                            <p>
+                                <asp:Image Width="50px" Height="100px" ImageUrl='<%#Eval("Image") %>' runat="server" />
+                            </p>
+                            <p>Price: <%#Eval("Price")%></p>
+                        </div>
+                    </div>
                 </ItemTemplate>
-                <FooterTemplate>
-                    </table>
-                </FooterTemplate>
             </asp:DataList>
         </div>
     </form>
