@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="CachingDemo.aspx.cs" Inherits="SampleWebFormApp.CachingDemo" %>
-<%@ OutputCache Duration="60" VaryByParam="City" %>
-<!DOCTYPE html>
+<%--<%@ OutputCache Duration="60" VaryByParam="City" %>--%>
 <%@ Register Src="~/UserControls/TimeControl.ascx" TagName="timeCtrl" TagPrefix="custom" %>
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -30,9 +30,13 @@
             <h2>Only this section of the Page will be cached!!!</h2>
             <custom:timeCtrl runat="server" ID="myCtrol" />   
         </div>
+        <div>
+            <h2>Data Caching Example</h2>
+            <asp:ListBox runat="server" ID="lstNames" Height="328px" Width="246px"></asp:ListBox>
+        </div>
         <hr />
         <div>
-            <h2>Caching in ASP.NET<h2>Caching in ASP.NET</h2>
+            <h2>Caching in ASP.NET</h2>
             <div>
                 <p>
                     Caching allows developers to store the Web content(Pages) in the memory for a certain period of time to deliver the pages in a faster manner when there is a huge network traffic. <br />

@@ -1,14 +1,6 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="NewEmployeeRegistration.aspx.cs" Inherits="SampleWebFormApp.NewEmployeeRegistration" %>
-
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
-        <div>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="NewEmployeeRegistration.aspx.cs" Inherits="SampleWebFormApp.NewEmployeeRegistration" MasterPageFile="~/Main.Master" %>
+<asp:Content runat="server" ContentPlaceHolderID="childContent">
+     <div>
             <h2>New Employee Registration</h2>
             <p>
                 Enter the Name: <asp:TextBox runat="server" ID="txtName" />
@@ -45,6 +37,4 @@
         <div>
             <asp:Label Text="" ForeColor="IndianRed" runat="server" ID="lblError" />
         </div>
-    </form>
-</body>
-</html>
+</asp:Content>    

@@ -1,7 +1,11 @@
-﻿using System;
+﻿using DataComponentLib.DataLayer;
+using DataComponentLib.Entities;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
+using System.Web.Caching;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -23,6 +27,33 @@ namespace SampleWebFormApp
                 default:
                     lblTime.Text = DateTime.Now.ToLongTimeString();
                     break;
+            }
+
+            if (!IsPostBack)
+            {
+                if (Cache["MyData"] == null)
+                {
+                    string strCon = ConfigurationManager.ConnectionStrings["myCon"].ConnectionString;
+                    SqlCacheDependencyAdmin.EnableNotifications(strCon);
+                    SqlCacheDependencyAdmin.EnableTableForNotifications(strCon, "EmpTable");
+                    SqlCacheDependency dep = new SqlCacheDependency("CACHE-DEMO", "EmpTable");
+                    Response.Write("New data is retrived");
+                    var data = DataFactory.GetEmployeeManager().GetAllEmployees();
+                    Cache.Add("MyData",//Key to the cache, should be unique 
+                        data, //data to cache, obtained from the db in this example
+                        //new System.Web.Caching.CacheDependency(Server.MapPath("MyTextFile.txt")),//Cache is removed if this file is modified.
+                        dep,
+                        DateTime.Now.AddMinutes(5),//Time interval to cache.
+                        System.Web.Caching.Cache.NoSlidingExpiration,//No Extension of the time. 
+                        System.Web.Caching.CacheItemPriority.Default, //Default priority
+                        null);//No call back function that should be called after caching. 
+                }
+                else
+                    Response.Write("Cached Data is retrived");
+                lstNames.DataSource = DataFactory.GetEmployeeManager().GetAllEmployees();
+                //lstNames.DataSource = Cache["MyData"] as List<Employee>;
+                lstNames.DataTextField = "EmpName";
+                lstNames.DataBind();
             }
         }
 

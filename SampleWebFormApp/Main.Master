@@ -1,0 +1,60 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Main.master.cs" Inherits="SampleWebFormApp.Main" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <h1>Welcome to ASP.NET Training!</h1>
+            <p>SASP.NET is a web application framework designed and developed by Microsoft. ASP.NET is open source and a subset of the .NET Framework and successor of the classic ASP(Active Server Pages). With version 1.0 of the .NET Framework, it was first released in January 2002. So a question comes to mind that which technology we were using before the year 2002 for developing web applications and services? Answer is Classic ASP. So before .NET and ASP.NET there was Classic ASP.
+                <br />  
+ASP.NET is built on the CLR(Common Language Runtime) which allows the programmers to execute its code using any .NET language(C#, VB etc.). It is specially designed to work with HTTP and for web developers to create dynamic web pages, web applications, web sites, and web services as it provides a good integration of HTML, CSS, and JavaScript.</p>
+            <p><b>Hit on the links below to see the featurs of ASP.NET</b></p>
+            <nav style="height: 53px; align-content:center">
+                <asp:Menu runat="server" Orientation="Horizontal">
+                    <Items>
+                        <asp:MenuItem Text="Login" NavigateUrl="~/LoginPage.aspx" />
+                        <asp:MenuItem Text="Home" NavigateUrl="~/HomePage.aspx" />
+                        <asp:MenuItem Text="ListBox" NavigateUrl="~/ListDemo.aspx" />
+                        <asp:MenuItem Text="DropDown Box" NavigateUrl="~/NewEmployeeRegistration.aspx" />
+                        <asp:MenuItem Text="PostBack Feature" NavigateUrl="~/PostBackFeature.aspx" />
+                        <asp:MenuItem Text="State management" NavigateUrl="~/QueryStringDemo.aspx" />
+                        <asp:MenuItem Text="Server Side StateManagement" NavigateUrl="~/SessionDemo.aspx" />
+                        <asp:MenuItem Text="Rich DB Controls" NavigateUrl="~/DisplayData.aspx" />
+                        <asp:MenuItem Text="Caching" NavigateUrl="~/CachingDemo.aspx" />
+                    </Items>
+                </asp:Menu>
+            </nav>
+            <hr />  
+        </div>
+        <div>
+            <div style="display:inline-block; vertical-align:top; min-height:450px; width:65%">
+                <asp:ContentPlaceHolder ID="childContent" runat="server">
+                    
+                </asp:ContentPlaceHolder>    
+            </div>
+            <div style="display:inline-block; min-height:450px; width:30%">
+                <asp:AdRotator runat="server" />
+                <asp:Calendar runat="server" BackColor="#FFFFCC" BorderColor="#FFCC66" BorderWidth="1px" DayNameFormat="Shortest" FirstDayOfWeek="Monday" Font-Names="Verdana" Font-Size="10pt" ForeColor="#663399" Height="200px" ShowGridLines="True" Width="220px" >
+                    <DayHeaderStyle BackColor="#FFCC66" Font-Bold="True" Height="1px" />
+                    <NextPrevStyle Font-Size="9pt" ForeColor="#FFFFCC" />
+                    <OtherMonthDayStyle ForeColor="#CC9966" />
+                    <SelectedDayStyle BackColor="#0033CC" Font-Bold="True" />
+                    <SelectorStyle BackColor="#FFCC66" />
+                    <TitleStyle BackColor="#990000" Font-Bold="True" Font-Size="9pt" ForeColor="#FFFFCC" />
+                    <TodayDayStyle BackColor="#FFCC66" ForeColor="White" />
+                </asp:Calendar>
+            </div>
+        </div>
+        <div style="text-align:center; bottom:45px; font-style:italic">
+            <p>@Copyrights Phaniraj Inc-<%=DateTime.Now.Year %></p>
+        </div>
+    </form>
+</body>
+</html>

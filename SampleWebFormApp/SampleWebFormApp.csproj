@@ -82,6 +82,8 @@
     <Content Include="Images\pic6.png" />
     <Content Include="Images\pic7.png" />
     <Content Include="ListDemo.aspx" />
+    <Content Include="LoginPage.aspx" />
+    <Content Include="MyTextFile.txt" />
     <Content Include="NewEmployeeRegistration.aspx" />
     <Content Include="PostBackFeature.aspx" />
     <Content Include="QueryStringDemo.aspx" />
@@ -121,6 +123,20 @@
     </Compile>
     <Compile Include="ListDemo.aspx.designer.cs">
       <DependentUpon>ListDemo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LoginPage.aspx.cs">
+      <DependentUpon>LoginPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LoginPage.aspx.designer.cs">
+      <DependentUpon>LoginPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Main.Master.cs">
+      <DependentUpon>Main.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Main.Master.designer.cs">
+      <DependentUpon>Main.Master</DependentUpon>
     </Compile>
     <Compile Include="Models\Product.cs" />
     <Compile Include="NewEmployeeRegistration.aspx.cs">
@@ -168,6 +184,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Main.Master" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

@@ -1,14 +1,6 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ListDemo.aspx.cs" Inherits="SampleWebFormApp.ListDemo" %>
-
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
-        <div>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Main.Master" CodeBehind="ListDemo.aspx.cs" Inherits="SampleWebFormApp.ListDemo" %>
+<asp:Content runat="server" ContentPlaceHolderID="childContent">
+     <div>
             <h2 style="text-align: center">List of Employees from the database</h2>
             <hr />
             <table>
@@ -44,6 +36,4 @@
                 </tr>
             </table>
         </div>
-    </form>
-</body>
-</html>
+</asp:Content>
