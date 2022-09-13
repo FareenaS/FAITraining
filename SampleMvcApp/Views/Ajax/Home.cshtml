@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "Home";
+    var options = new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "ajaxSection" };
+}
+
+<h1>Ajax Single Page Application</h1>
+<nav>
+    @Ajax.ActionLink("All Employees", "EmpList", options)
+    @Ajax.ActionLink("Add New Employee", "AddNew", options)
+    @Ajax.ActionLink("Search By Name", "Search", options)
+</nav>
+
+<section id="ajaxSection">
+    Content will be changed
+</section>
+

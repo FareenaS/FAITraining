@@ -1,0 +1,44 @@
+﻿@model SampleMvcApp.Models.EmpTable
+
+@{
+//Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>OnEdit</title>
+</head>
+<body>
+    <h1>Details of Mr.@Model.EmpName</h1>
+    <hr />
+    <div>
+        @using (Html.BeginForm())
+        {
+            <p>
+                EmpId : @Html.EditorFor((m) => m.EmpId)
+            </p>
+            <p>
+                EmpName : @Html.EditorFor((m) => m.EmpName)
+            </p>
+            <p>
+                EmpAddress : @Html.EditorFor((m) => m.EmpAddress)
+            </p>
+            <p>
+                EmpSalary : @Html.EditorFor((m) => m.EmpSalary)
+            </p>
+            <p>
+                DeptId : @Html.EditorFor((m) => m.DeptId)
+            </p>
+            <p>
+                Date Of Birth : @Html.EditorFor((m) => m.DateOfBirth)
+            </p>
+            <p>
+                <button>Update</button>
+            </p>
+        }
+    </div>
+</body>
+</html>

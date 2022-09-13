@@ -1,0 +1,25 @@
+﻿@model SampleMvcApp.Models.EmpTable
+@{ 
+    var options = new AjaxOptions { UpdateTargetId = "ajaxSection", InsertionMode = InsertionMode.Replace };
+    var depts = ViewBag.Depts as List<SelectListItem>;
+}
+@using (Ajax.BeginForm(options))
+{
+    @*@Html.EditorForModel()*@
+    <p>
+        Enter the Name: @Html.EditorFor((m) => m.EmpName)
+    </p>
+    <p>
+        Enter the Address: @Html.EditorFor((m) => m.EmpAddress)
+    </p>
+    <p>
+        Enter the Salary: @Html.EditorFor((m) => m.EmpSalary)
+    </p>
+    <p>
+        Enter the Date of Birth: @Html.EditorFor((m) => m.DateOfBirth)
+    </p>
+    <p>
+        Select the Dept: @Html.DropDownListFor((m) => m.DeptId, depts)
+    </p>
+    <button>Save Changes</button>
+}

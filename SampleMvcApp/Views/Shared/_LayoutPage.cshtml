@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Styles/MainStyle.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.6.0.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/MicrosoftMvcAjax.js"></script>
+</head>
+<body>
+    <div>
+        <h1 class="title">Welcome to ASP.NET MVC Training</h1>
+        <hr />
+        @Html.ActionLink("Home", "AllEmployees", "Database")
+        @Html.ActionLink("Add New", "AddNewEmployee", "Database")
+        @Html.ActionLink("Search Here", "Search", "Database")
+    </div>
+    <div>
+        @RenderBody()
+    </div>
+    <div>
+       
+        <footer>
+            <p>&copy;CopyRights MVC Training-@DateTime.Now.Year</p>
+        </footer>
+    </div>
+</body>
+</html>

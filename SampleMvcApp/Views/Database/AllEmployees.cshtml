@@ -1,0 +1,51 @@
+﻿@model List<SampleMvcApp.Models.EmpTable>
+@{
+   
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AllEmployees</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <script>
+        $(document).ready(function () {
+            alert("jQuery is working")
+        })
+    </script>
+    <header>
+       
+    </header>
+    <h1>List of Employees with Us!!!</h1>
+    <hr />
+    @foreach (var emp in Model)
+    {
+        <div class="card">
+            <h2>@emp.EmpName</h2>
+            <hr />
+            <p>Address: @emp.EmpAddress</p>
+            <p>Salary: Rs. @emp.EmpSalary</p>
+            <p>
+                Dept: @if (emp.DeptTable == null)
+                {
+                    <span style="color:indianred">Not Available</span>
+                }
+                else
+                {
+                    <span>@emp.DeptTable.DeptName</span>
+                }
+            </p>
+            <p>
+                @Html.ActionLink("Edit", "OnEdit", new { id = emp.EmpId })
+                @Html.ActionLink("Remove", "OnDelete", new { id = emp.EmpId })
+            </p>
+        </div>
+    }
+</body>
+</html>

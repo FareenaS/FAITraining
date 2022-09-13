@@ -1,0 +1,62 @@
+﻿
+@{
+//Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Search</title>
+    <style>
+        .card {
+            display: inline-block;
+            width: 30%;
+            padding: 5px;
+            margin: 5px;
+            vertical-align: top;
+            border: 2px dotted green
+        }
+    </style>
+</head>
+<body>
+    <div>
+        @using (Html.BeginForm("SearchByName", "Database", FormMethod.Post))
+        {
+            <p>
+                Search Here: @Html.Editor("search")
+                <button>Search</button>
+            </p>
+        }
+    </div>
+    <div>
+        @if (ViewData.ContainsKey("SearchedEmpList"))
+        {
+            var records = ViewData["SearchedEmpList"] as List<SampleMvcApp.Models.EmpTable>;
+            foreach (var emp in records)
+            {
+                <div class="card">
+                    <h2>@emp.EmpName</h2>
+                    <hr />
+                    <p>Address: @emp.EmpAddress</p>
+                    <p>Salary: Rs. @emp.EmpSalary</p>
+                    <p>
+                        Dept: @if (emp.DeptTable == null)
+                        {
+                            <span style="color:indianred">Not Available</span>
+                        }
+                        else
+                        {
+                            <span>@emp.DeptTable.DeptName</span>
+                        }
+                    </p>
+                    <p>
+                        @Html.ActionLink("Edit", "OnEdit", new { id = emp.EmpId })
+                        @Html.ActionLink("Remove", "OnDelete", new { id = emp.EmpId })
+                    </p>
+                </div>
+            }
+        }
+    </div>
+</body>
+</html>

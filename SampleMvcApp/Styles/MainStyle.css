@@ -1,0 +1,43 @@
+﻿body {
+    background-color: lightblue;
+    color: darkblue;
+    padding:5px;
+    margin:5px;
+}
+
+h1{
+    text-align:center;
+    font-size: 30pt;
+    background-color:lightgoldenrodyellow;
+    color:goldenrod;
+}
+.title {
+    padding: 35px;
+    font-size: 38pt;
+    text-align: center;
+    margin: 20px;
+    color: darkgoldenrod;
+}
+
+.card {
+    display: inline-block;
+    width: 30%;
+    padding: 5px;
+    margin: 5px;
+    vertical-align: top;
+    border: 1px solid yellow;
+    box-shadow: 10px 5px 5px red;
+}
+
+a{
+    padding: 5px;
+    margin: 5px;
+    background-color: lightcoral;
+    color: bisque;
+    display: inline-block;
+}
+footer{
+    text-align:center;
+    font-style:italic;
+    font-size:0.8em;
+}

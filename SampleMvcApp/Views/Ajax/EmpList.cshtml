@@ -1,0 +1,24 @@
+﻿@model List<SampleMvcApp.Models.EmpTable>
+@foreach (var emp in Model)
+{
+    <div class="card">
+        <h2>@emp.EmpName</h2>
+        <hr />
+        <p>Address: @emp.EmpAddress</p>
+        <p>Salary: Rs. @emp.EmpSalary</p>
+        <p>
+            Dept: @if (emp.DeptTable == null)
+            {
+                <span style="color:indianred">Not Available</span>
+            }
+            else
+            {
+                <span>@emp.DeptTable.DeptName</span>
+            }
+        </p>
+        <p>
+            @Html.ActionLink("Edit", "OnEdit", new { id = emp.EmpId })
+            @Html.ActionLink("Remove", "OnDelete", new { id = emp.EmpId })
+        </p>
+    </div>
+}
