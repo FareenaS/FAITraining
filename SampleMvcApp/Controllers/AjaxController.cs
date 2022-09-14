@@ -20,10 +20,14 @@ namespace SampleMvcApp.Controllers
             var data = new RecapEntities().EmpTables.ToList();
             return PartialView(data);
         }
+
         #region Manipulations
         public PartialViewResult AddNewEmployee()
         {
-            return PartialView(new EmpTable());
+            var depts = new RecapEntities().DeptTables.ToList();//Get the Depts Lisgt
+            var selectListItems = depts.Select((d) => new SelectListItem { Text = d.DeptName, Value = d.DeptId.ToString() }).ToList();//Convert every Dept to SelectListItem
+            ViewBag.AllItems = selectListItems;//Set the List<SelectListItem> to the ViewBag by name AllItems
+            return PartialView(new EmpTable());//Return the Partial View....
         }
 
         [HttpPost]

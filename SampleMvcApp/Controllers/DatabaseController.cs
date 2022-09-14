@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace SampleMvcApp.Controllers
 {
+    [Authorize]
     public class DatabaseController : Controller
     {
         public ViewResult AllEmployees()

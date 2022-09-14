@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace SampleMvcApp.Controllers
 {
@@ -35,7 +36,8 @@ namespace SampleMvcApp.Controllers
                 return RedirectToAction("Index");
             }else//If the validation fails. 
             {
-                return View(user);
+                ModelState.AddModelError("Failure", "User already Exists");
+                return View();
             }           
         } 
 
@@ -50,7 +52,30 @@ namespace SampleMvcApp.Controllers
             return false;
         }
 
+        public ActionResult Login()
+        {
+            var model = new LoginView();
+            return View(model);
+        }
 
-
+        [HttpPost]
+        public ActionResult Login(LoginView loginDetails)
+        {
+            if (ModelState.IsValid)
+            {
+                var context = new RecapEntities();
+                var user = context.UserTables.SingleOrDefault((u) => u.EmailAddress == loginDetails.EmailAddress && u.Password == loginDetails.Password);
+                if (user == null)
+                {
+                    ModelState.AddModelError("LoginFailure", "Login Failed for the User");
+                    return View(loginDetails);
+                }
+                    FormsAuthentication.SetAuthCookie(loginDetails.EmailAddress, false);
+                    FormsAuthentication.RedirectFromLoginPage(loginDetails.EmailAddress, false);
+                    return View(loginDetails);
+            }
+            else
+                return View(loginDetails);
+        }
     }
 }
