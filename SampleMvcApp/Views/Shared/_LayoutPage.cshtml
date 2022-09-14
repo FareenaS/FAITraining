@@ -5,8 +5,8 @@
     <title>@ViewBag.Title</title>
     <link href="~/Styles/MainStyle.css" rel="stylesheet" />
     <script src="~/Scripts/jquery-3.6.0.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
     <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
-    <script src="~/Scripts/MicrosoftMvcAjax.js"></script>
 </head>
 <body>
     <div>
@@ -15,6 +15,17 @@
         @Html.ActionLink("Home", "AllEmployees", "Database")
         @Html.ActionLink("Add New", "AddNewEmployee", "Database")
         @Html.ActionLink("Search Here", "Search", "Database")
+    </div>
+    <div>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <p>Welcome @User.Identity.Name</p>
+        }
+        else
+        {
+            @Html.ActionLink("Login", "Login", "Account")
+            @Html.ActionLink("New User? SignUp!", "RegisterNewUser", "Account")
+        }
     </div>
     <div>
         @RenderBody()

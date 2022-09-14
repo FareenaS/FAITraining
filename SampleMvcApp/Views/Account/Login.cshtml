@@ -1,0 +1,48 @@
+﻿@model SampleMvcApp.ViewModels.LoginView
+
+@{
+
+
+
+
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+</head>
+<body>
+    <div>
+        <h1>Please login here!!!!</h1>
+        <hr />
+        @using (Html.BeginForm())
+        {
+            <div style="color:red">
+                @Html.ValidationSummary()
+            </div>
+        <div>
+            <p>
+                Enter the Login EMail Address:
+                @Html.EditorFor((m) => m.EmailAddress)
+            </p>
+            <p style="color:red">
+                @Html.ValidationMessageFor((m) => m.EmailAddress)
+            </p>
+        </div>
+        <div>
+            <p>
+                Enter the Password:
+                @Html.EditorFor((m) => m.Password)
+            </p>
+            <p style="color:red">
+                @Html.ValidationMessageFor((m) => m.Password)
+            </p>
+        </div>
+        <p><button>Login</button></p>
+        }
+    </div>
+</body>
+</html>

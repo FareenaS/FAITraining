@@ -17,21 +17,22 @@
     <div>
         @using (Html.BeginForm())
         {
+            <div style="color:red">@Html.ValidationSummary()</div>
             <div class="row">
                 Enter the First Name:@Html.EditorFor((m) => m.FirstName)
-                <p class="err">@Html.ValidationMessageFor((m) => m.FirstName)</p>
+                <p style="color:red">@Html.ValidationMessageFor((m) => m.FirstName)</p>
 </div>
             <div class="row">
                 Enter the Last Name:@Html.EditorFor((m) => m.LastName)
-                <p class="err">@Html.ValidationMessageFor((m) => m.LastName)</p>
+                <p style="color:red">@Html.ValidationMessageFor((m) => m.LastName)</p>
 </div>
             <div class="row">
                 Enter the Email Address:@Html.EditorFor((m) => m.EmailAddress)
-                <p class="err">@Html.ValidationMessageFor((m) => m.EmailAddress)</p>
+                <p style="color:red">@Html.ValidationMessageFor((m) => m.EmailAddress)</p>
             </div>
             <div class="row">
                 Enter the Password:@Html.EditorFor((m) => m.Password)
-                <p class="err"> @Html.ValidationMessageFor((m) => m.Password)</p>
+                <p style="color:red"> @Html.ValidationMessageFor((m) => m.Password)</p>
 </div>
             <div class="row">
                 Retype the Password:@Html.Editor("PasswordRetype")
