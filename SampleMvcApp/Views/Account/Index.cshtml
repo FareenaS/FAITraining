@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        @if(Request.IsAuthenticated)
+        {
+            <h1>Welcome User: <span>@Html.Encode(User.Identity.Name)</span></h1>
+        }
+        else
+        {
+            @Html.ActionLink("Login", "Login")
+            @Html.ActionLink("New User? SignUp!", "RegisterNewUser")
+        }
+    </div>
+</body>
+</html>

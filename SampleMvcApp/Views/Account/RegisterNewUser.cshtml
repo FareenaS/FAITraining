@@ -1,0 +1,43 @@
+﻿@model SampleMvcApp.ViewModels.UserDetails
+
+@{
+    
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>RegisterNewUser</title>
+</head>
+<body>
+    <h2>User Registration Page</h2>
+    <hr />
+    <div>
+        @using (Html.BeginForm())
+        {
+            <div class="row">
+                Enter the First Name:@Html.EditorFor((m) => m.FirstName)
+                <p class="err">@Html.ValidationMessageFor((m) => m.FirstName)</p>
+</div>
+            <div class="row">
+                Enter the Last Name:@Html.EditorFor((m) => m.LastName)
+                <p class="err">@Html.ValidationMessageFor((m) => m.LastName)</p>
+</div>
+            <div class="row">
+                Enter the Email Address:@Html.EditorFor((m) => m.EmailAddress)
+                <p class="err">@Html.ValidationMessageFor((m) => m.EmailAddress)</p>
+            </div>
+            <div class="row">
+                Enter the Password:@Html.EditorFor((m) => m.Password)
+                <p class="err"> @Html.ValidationMessageFor((m) => m.Password)</p>
+</div>
+            <div class="row">
+                Retype the Password:@Html.Editor("PasswordRetype")
+            </div>
+            <button>Register</button>
+        }
+    </div>
+</body>
+</html>
