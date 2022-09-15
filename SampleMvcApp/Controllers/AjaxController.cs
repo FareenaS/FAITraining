@@ -4,7 +4,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+/*
+1. Install the following packages from the Nuget.
+MicrosoftMvcAjax
+jQuery
+Microsoft.jQuery.Unobtrusive.Ajax
 
+2. Include the following files in the layout.cshtml file
+jQUery.min.js
+MicrosoftMvcAjax.js
+jquery unobtrusive ajax min.js
+
+3. Create a Controller named Ajax and create a Home Action that returns an empty View. 
+4. Implement the Action methods in the controller. The methods that return Ajax responses should be partial Views.
+5. All Ajax Helpers will have AjaxOptions parameter that contains the info about the way the Ajax Response is rendered. 
+*/
 namespace SampleMvcApp.Controllers
 {
     public class AjaxController : Controller
