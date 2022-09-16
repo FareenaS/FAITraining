@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="Scripts/jquery-3.6.0.min.js"></script>
+    <script src="Scripts/bootstrap.bundle.min.js"></script>
+    <script src="Scripts/CustomFunctions.js"></script>
+    <style>
+        body {
+            margin-left: 15px;
+        }
+
+        .jumbotron {
+            padding: 45px;
+            margin: 5px;
+            text-align: center;
+            background-color: lightblue;
+            font-size: xx-large
+        }
+
+        .block {
+            margin-left: 20pt;
+            font-size: 20pt;
+            font-family: 'Courier New'
+        }
+    </style>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <script>
+        const url = "api/EmployeeApi"//The server location is same as our client location....
+
+        function init() {
+            $(".block").hide(3000);
+            $("a:first").click(function () {
+                $.get(url, function (data) {
+                    populateData(data)
+                });
+                $(".block:first").show(3000);
+            })
+
+            $("a:eq(1)").click(() => {
+                $(".block").hide(2000);
+                $(".block:eq(1)").show(3000)
+            })
+
+            $("a:eq(2)").click(() => {
+                $(".block").hide(3000)
+                $(".block:last").show(2000)
+            })
+        }
+
+
+        function deleteHandler() {
+            btnHandler($("#btnDelete"), function () {
+                let id = $("#txtDeleteId").val();//Get the value of the input...
+                deleteRec(id)
+                $("input").val("");
+                $(".block:last").hide(3000);
+            })
+        }
+
+        function addHandler() {
+            btnHandler($("#btnAdd"), function () {
+                const obj = createEmpObject();
+                console.log(obj);
+                $.post(url, obj, (msg) => {
+                    alert(msg);
+                    $(".block:eq(1)").hide(2000);
+                })
+            })
+        }
+        $(document).ready(function () {
+            init();
+            deleteHandler();
+            addHandler();
+        });
+    </script>
+
+</head>
+<body>
+    <h1 class="jumbotron">Employee Monitoring System</h1>
+    <nav class="navbar navbar-expand-lg bg-info">
+        <ul class="navbar-nav navbar-collapse">
+            <li class="nav-item"><a class="btn btn-danger m-2" href="#">All Employees</a></li>
+            <li class="nav-item"><a class="btn btn-secondary m-2" href="#">Add New</a></li>
+            <li class="nav-item"><a class="btn btn-primary m-2" href="#">Delete</a></li>
+        </ul>
+    </nav>
+    <hr />
+    <div class="container-fluid">
+        <div class="block">
+            <h2 class="h2">List of Employees</h2>
+            <div class="col-md-8">
+                <table class="table table-bordered table-striped table-hover bg-success text-bg-light">
+                    <tr>
+                        <th>Employee ID</th>
+                        <th>Employee Name</th>
+                        <th>Employee Address</th>
+                        <th>Employee Salary</th>
+                        <th>Details</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="block col-md-6">
+            <h2>New Employee Registration</h2>
+            <div class="col-md-10">
+                <p>Enter the Name: <input type="text" id="txtName" class="form-control" /> </p>
+                <p>Enter the Address: <input type="text" id="txtAddress"  class="form-control"/> </p>
+                <p>Enter the Salary: <input type="number" id="txtSalary"  class="form-control"/> </p>
+                <p>Enter the Dept: <input type="number" id="txtDept"  class="form-control"/> </p>
+                <p>Enter the Date of Birth: <input type="date" id="txtDob"  class="form-control"/> </p>
+                <button id="btnAdd" class="btn btn-danger">Add Employee</button>
+            </div>
+        </div>
+        <div class="block col-md-5">
+            <h2>Delete Employee</h2>
+            <p>
+                <label class="form-label">Enter the ID of the Employee to Delete</label>
+                <input type="number" id="txtDeleteId" value="" class="form-control"/>
+            </p>
+            <button id="btnDelete" class="btn btn-dark">Delete X</button>
+        </div>
+    </div>
+</body>
+</html>
