@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+}
+<div>
+    <h2>Login Here</h2>
+    <hr />
+    @using (Html.BeginForm())
+    {
+        <p style="color:indianred">
+            @Html.ValidationSummary()
+        </p>
+        <p>Enter the Email Address:@Html.Editor("email")</p>
+        <p>Enter the Password:@Html.Editor("password")</p>
+        <p>
+            <button>Login</button>
+        </p>
+    }
+</div>

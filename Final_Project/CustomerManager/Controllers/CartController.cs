@@ -1,13 +1,11 @@
 ﻿using DataComponentLib;
 using DataComponentLib.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace CustomerManager.Controllers
 {
+    [Authorize]
     public class CartController : Controller
     {
         // GET: Cart
@@ -32,7 +30,7 @@ namespace CustomerManager.Controllers
 
         public ActionResult GoToBill()
         {
-            var currentUser = Session["currentUser"] as CustomerTable;
+            var currentUser = Session["CurrentUser"] as CustomerTable;
             var com = new CartComponent();
             com.Customer = currentUser;
             com.GenerateBill();

@@ -50,11 +50,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="User-Order.cs" />
-    <Compile Include="Models\BillDetailTable.cs">
+    <Compile Include="Models\CustomerTable.cs">
       <DependentUpon>UserModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\CustomerTable.cs">
+    <Compile Include="User-Order.cs" />
+    <Compile Include="Models\BillDetailTable.cs">
       <DependentUpon>UserModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\OrderTable.cs">

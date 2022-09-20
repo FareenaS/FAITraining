@@ -26,8 +26,8 @@ namespace DataComponentLib.Models
         }
     
         public virtual DbSet<BillDetailTable> BillDetailTables { get; set; }
-        public virtual DbSet<CustomerTable> CustomerTables { get; set; }
         public virtual DbSet<OrderTable> OrderTables { get; set; }
         public virtual DbSet<ProductTable> ProductTables { get; set; }
+        public virtual DbSet<CustomerTable> CustomerTables { get; set; }
     }
 }

@@ -6,12 +6,12 @@
     <edmx:Diagrams>
       <Diagram DiagramId="39654c1e008845ce9e96a9b66c94f63e" Name="Diagram1">
         <EntityTypeShape EntityType="FaiTrainingModel.BillDetailTable" Width="1.5" PointX="6.5" PointY="0.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="FaiTrainingModel.CustomerTable" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="FaiTrainingModel.OrderTable" Width="1.5" PointX="2.625" PointY="0.5" IsExpanded="true" />
         <EntityTypeShape EntityType="FaiTrainingModel.ProductTable" Width="1.5" PointX="6.625" PointY="3.5" IsExpanded="true" />
         <AssociationConnector Association="FaiTrainingModel.FK__BillDetai__Order__339FAB6E" ManuallyRouted="false" />
         <AssociationConnector Association="FaiTrainingModel.FK__BillDetai__Produ__3493CFA7" ManuallyRouted="false" />
-        <AssociationConnector Association="FaiTrainingModel.FK__OrderTabl__Custo__30C33EC3" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="FaiTrainingModel.CustomerTable" Width="1.5" PointX="3" PointY="4" />
+        <AssociationConnector Association="FaiTrainingModel.FK__OrderTabl__Custo__30C33EC3" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

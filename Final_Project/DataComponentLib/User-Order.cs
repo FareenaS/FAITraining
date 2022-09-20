@@ -10,6 +10,8 @@ namespace DataComponentLib
 {
     public interface IUserModule
     {
+        CustomerTable ValidateUser(string email, string password);
+
         void RegisterUser(CustomerTable customer);
 
         void UpdateUserDetails(string address, string telephone, int cstId);
@@ -58,6 +60,13 @@ namespace DataComponentLib
             cst.CustomerAddress = address;
             cst.Telephone = telephone;
             context.SaveChanges();
+        }
+
+        public CustomerTable ValidateUser(string email, string password)
+        {
+            var context = new FaiTrainingEntities();
+            var rec = context.CustomerTables.Where((c) => c.EmailAddress == email && c.Password == password).SingleOrDefault();
+            return rec;
         }
     }
 
@@ -130,6 +139,7 @@ namespace DataComponentLib
                 billingDetails.Add(billDetail);
             }
             addToBillDetail(billingDetails);
+            com.UpdateOrderDetail(currentOrderId);
         }
     }
     public class CustomerAlreadyExistsException : Exception
