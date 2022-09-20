@@ -1,0 +1,274 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="FaiTrainingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BillDetailTable">
+          <Key>
+            <PropertyRef Name="EntryId" />
+          </Key>
+          <Property Name="EntryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CustomerTable">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CustomerAddress" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Telephone" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="EmailAddress" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrderTable">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerId" Type="int" Nullable="false" />
+          <Property Name="OrderDate" Type="date" Nullable="false" />
+          <Property Name="TotalItems" Type="int" />
+          <Property Name="BillAmount" Type="money" />
+        </EntityType>
+        <EntityType Name="ProductTable">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Price" Type="money" Nullable="false" />
+          <Property Name="Image" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="ProductCount" Type="int" />
+        </EntityType>
+        <Association Name="FK__BillDetai__Order__339FAB6E">
+          <End Role="OrderTable" Type="Self.OrderTable" Multiplicity="1" />
+          <End Role="BillDetailTable" Type="Self.BillDetailTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderTable">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="BillDetailTable">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BillDetai__Produ__3493CFA7">
+          <End Role="ProductTable" Type="Self.ProductTable" Multiplicity="1" />
+          <End Role="BillDetailTable" Type="Self.BillDetailTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductTable">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="BillDetailTable">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderTabl__Custo__30C33EC3">
+          <End Role="CustomerTable" Type="Self.CustomerTable" Multiplicity="1" />
+          <End Role="OrderTable" Type="Self.OrderTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerTable">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="OrderTable">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FaiTrainingModelStoreContainer">
+          <EntitySet Name="BillDetailTable" EntityType="Self.BillDetailTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomerTable" EntityType="Self.CustomerTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderTable" EntityType="Self.OrderTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductTable" EntityType="Self.ProductTable" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__BillDetai__Order__339FAB6E" Association="Self.FK__BillDetai__Order__339FAB6E">
+            <End Role="OrderTable" EntitySet="OrderTable" />
+            <End Role="BillDetailTable" EntitySet="BillDetailTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BillDetai__Produ__3493CFA7" Association="Self.FK__BillDetai__Produ__3493CFA7">
+            <End Role="ProductTable" EntitySet="ProductTable" />
+            <End Role="BillDetailTable" EntitySet="BillDetailTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderTabl__Custo__30C33EC3" Association="Self.FK__OrderTabl__Custo__30C33EC3">
+            <End Role="CustomerTable" EntitySet="CustomerTable" />
+            <End Role="OrderTable" EntitySet="OrderTable" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FaiTrainingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BillDetailTable">
+          <Key>
+            <PropertyRef Name="EntryId" />
+          </Key>
+          <Property Name="EntryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="OrderTable" Relationship="Self.FK__BillDetai__Order__339FAB6E" FromRole="BillDetailTable" ToRole="OrderTable" />
+          <NavigationProperty Name="ProductTable" Relationship="Self.FK__BillDetai__Produ__3493CFA7" FromRole="BillDetailTable" ToRole="ProductTable" />
+        </EntityType>
+        <EntityType Name="CustomerTable">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CustomerAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telephone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="OrderTables" Relationship="Self.FK__OrderTabl__Custo__30C33EC3" FromRole="CustomerTable" ToRole="OrderTable" />
+        </EntityType>
+        <EntityType Name="OrderTable">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
+          <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="TotalItems" Type="Int32" />
+          <Property Name="BillAmount" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="BillDetailTables" Relationship="Self.FK__BillDetai__Order__339FAB6E" FromRole="OrderTable" ToRole="BillDetailTable" />
+          <NavigationProperty Name="CustomerTable" Relationship="Self.FK__OrderTabl__Custo__30C33EC3" FromRole="OrderTable" ToRole="CustomerTable" />
+        </EntityType>
+        <EntityType Name="ProductTable">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Image" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ProductCount" Type="Int32" />
+          <NavigationProperty Name="BillDetailTables" Relationship="Self.FK__BillDetai__Produ__3493CFA7" FromRole="ProductTable" ToRole="BillDetailTable" />
+        </EntityType>
+        <Association Name="FK__BillDetai__Order__339FAB6E">
+          <End Role="OrderTable" Type="Self.OrderTable" Multiplicity="1" />
+          <End Role="BillDetailTable" Type="Self.BillDetailTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderTable">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="BillDetailTable">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BillDetai__Produ__3493CFA7">
+          <End Role="ProductTable" Type="Self.ProductTable" Multiplicity="1" />
+          <End Role="BillDetailTable" Type="Self.BillDetailTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductTable">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="BillDetailTable">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderTabl__Custo__30C33EC3">
+          <End Role="CustomerTable" Type="Self.CustomerTable" Multiplicity="1" />
+          <End Role="OrderTable" Type="Self.OrderTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerTable">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="OrderTable">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FaiTrainingEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BillDetailTables" EntityType="Self.BillDetailTable" />
+          <EntitySet Name="CustomerTables" EntityType="Self.CustomerTable" />
+          <EntitySet Name="OrderTables" EntityType="Self.OrderTable" />
+          <EntitySet Name="ProductTables" EntityType="Self.ProductTable" />
+          <AssociationSet Name="FK__BillDetai__Order__339FAB6E" Association="Self.FK__BillDetai__Order__339FAB6E">
+            <End Role="OrderTable" EntitySet="OrderTables" />
+            <End Role="BillDetailTable" EntitySet="BillDetailTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BillDetai__Produ__3493CFA7" Association="Self.FK__BillDetai__Produ__3493CFA7">
+            <End Role="ProductTable" EntitySet="ProductTables" />
+            <End Role="BillDetailTable" EntitySet="BillDetailTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderTabl__Custo__30C33EC3" Association="Self.FK__OrderTabl__Custo__30C33EC3">
+            <End Role="CustomerTable" EntitySet="CustomerTables" />
+            <End Role="OrderTable" EntitySet="OrderTables" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FaiTrainingModelStoreContainer" CdmEntityContainer="FaiTrainingEntities">
+          <EntitySetMapping Name="BillDetailTables">
+            <EntityTypeMapping TypeName="FaiTrainingModel.BillDetailTable">
+              <MappingFragment StoreEntitySet="BillDetailTable">
+                <ScalarProperty Name="EntryId" ColumnName="EntryId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerTables">
+            <EntityTypeMapping TypeName="FaiTrainingModel.CustomerTable">
+              <MappingFragment StoreEntitySet="CustomerTable">
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="CustomerAddress" ColumnName="CustomerAddress" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderTables">
+            <EntityTypeMapping TypeName="FaiTrainingModel.OrderTable">
+              <MappingFragment StoreEntitySet="OrderTable">
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="TotalItems" ColumnName="TotalItems" />
+                <ScalarProperty Name="BillAmount" ColumnName="BillAmount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductTables">
+            <EntityTypeMapping TypeName="FaiTrainingModel.ProductTable">
+              <MappingFragment StoreEntitySet="ProductTable">
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="ProductCount" ColumnName="ProductCount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

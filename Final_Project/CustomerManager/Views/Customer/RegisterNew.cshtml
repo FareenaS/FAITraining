@@ -1,0 +1,29 @@
+﻿@model DataComponentLib.Models.CustomerTable
+
+@{
+    ViewBag.Title = "RegisterNew";
+}
+
+<h2>Register New User</h2>
+<hr />
+@using (Html.BeginForm())
+{
+    <p>
+        @Html.ValidationSummary()
+    </p>
+    <p>
+        Enter the Customer Name: @Html.EditorFor((m) => m.CustomerName)
+    </p>
+    <p>
+        Enter the Customer Address: @Html.EditorFor((m) => m.CustomerAddress)
+    </p>
+    <p>
+        Enter the Customer Email Address: @Html.EditorFor((m) => m.EmailAddress)
+    </p>
+    <p>
+        Enter the Customer Phone: @Html.EditorFor((m) => m.Telephone)
+    </p>
+    <p>
+        <button>Save Changes</button>
+    </p>
+}

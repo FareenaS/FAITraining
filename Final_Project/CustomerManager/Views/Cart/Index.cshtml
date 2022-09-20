@@ -1,0 +1,26 @@
+﻿@model List<DataComponentLib.Models.ProductTable>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@foreach (var item in Model)
+{
+    using (Html.BeginForm("OnAddToCart", "Cart", FormMethod.Post))
+    {
+        <div>
+            <h2>@item.ProductName</h2>
+            <hr />
+            <div>
+                <img src="@item.Image" alt="Alternate Text" width="100px" height="100px" />
+            </div>
+            <p>Price: @item.Price</p>
+            <button>Add To Cart</button>
+        </div>
+    }
+}
+@using (Html.BeginForm("GoToBill", "Cart"))
+{
+    <button>Generate Bill</button>
+}
+
