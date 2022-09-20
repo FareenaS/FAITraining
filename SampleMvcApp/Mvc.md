@@ -1,0 +1,20 @@
+# Things to know in ASP.NET MVC:
+- How MVC works?
+- How to create Controllers
+- How to create ActionResults and Views
+- Different ways of sharing the data from the controller to the View.
+- Different ways of sharing the data from the View to the Controller.
+- RedirectToAction vs RedirectToView difference. 
+- ViewBag vs. ViewData vs. TempData. 
+- Using Partial Views. 
+- Using JS bundles. 
+- Customize the Mvc PipeLine using Custom Controllers, Custom Views, and Custom ViewEngines. 
+- Using HTTP attributes. 
+- Validation of Model Data. 
+- Authorization of Controllers. 
+- Customizing Routes in Route.Config.
+- How to create Web API?
+- Difference b/w Api Controller and MVC Controller. 
+- Managing Route Attribute for multiple Gets.
+- Authentication Tokens for Web API.
+- GET vs. POST vs. PUT vs. DELETE.
